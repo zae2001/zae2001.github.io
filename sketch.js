@@ -2,7 +2,7 @@ var printed = 0
 
 // setup() is called once at page-load
 function setup() {
-	createCanvas(800,600); // make an HTML canvas element width x height pixels
+	createCanvas(600,600); // make an HTML canvas element width x height pixels
   //frameRate(1)
 }
 
@@ -26,21 +26,23 @@ function draw() {
   
   
   
+  
   //hour - pink - left
+  let hmap = map(h, 0, 12, 0, width);
+  
   if(h>0 && h!=ph){
     fill(255,0,255,100);
     //let c1=color(255,0,255,200)
     //let c2=color(255,0,255,100)
     //gradient(h*50, -600, (h-1)*49, -600, c1.toString(), c2.toString());
-    rect(0,600,h*50, -600)
-    
-    
+    rect(0,width,hmap, -width)
     
     ph=h
   }
   
   
   //minute - yellow - top
+  let mmap = map(m, 0, 60, 0, height);
   if(m>0 && m!=pm){
     fill(255,255,0,120)
     //let c3= color(255,255,0,120)
@@ -48,7 +50,7 @@ function draw() {
     //gradient(600, (m-1.5)*10, 600, m*10, c3.toString(), c4.toString())
     //x1 y1 x2 y2
     //
-    rect(0,0,600, m*10)
+    rect(0,0,width, mmap)
     
     //fill(255,255,0,120)
     //rect(0,(m-1)*10,600, 10)
@@ -67,9 +69,9 @@ function draw() {
   
   //second - blue - corner
   if(s>0 && s!=ps){
-    
+    let smap = map(s, 0,60, width, 0);
     fill(0,255,255,80)
-    triangle(600,600,600,600-((s*10)),600-((s*10)),600)
+    triangle(width,width,width,smap,smap,width)
     ps=s;
   }
   
